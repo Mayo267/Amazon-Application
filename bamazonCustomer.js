@@ -1,5 +1,5 @@
-var inquirer = ("inquirer"); //Install inquirer npm
-var mysql = require("mysql"); //Install mysql npm
+var inquirer = require("inquirer"); 
+var mysql = require("mysql");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -15,22 +15,21 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId + "\n");
-    // findItem();
+    findItem();
     showList();
     afterConnection();
 });
 
 //===========================================================================//\
-// inquirer.prompt is not a function??
 function findItem(){
     function search(){
         inquirer
         .prompt({
             name: "find_id",
             type: "input",
-            message: "What is the ID number of the item you'd like to purchase?"
+            message: "Please type the list number of the item you'd like to purchase?"
         }).then(function(user){
-            console.log("You've selected " + user.find_id + " ...");
+            console.log("You've selected " + user.find_id + " ... ");
         })
     }
 search();
@@ -38,8 +37,8 @@ search();
 
 //===========================================================================//
 function showList(){
-    console.log("Showing List.... ");
-    var query = connection.query(
+    console.log("\nShowing List.... ");
+    connection.query(
         "SELECT * FROM products",
         function(err, res) {
             // console.log(res);
@@ -47,7 +46,7 @@ function showList(){
                 console.log("\n" + res[i].itemID + " | " + res[i].productName + " -- " + res[i].deptName + " -- " + "$" + res[i].price + " -- (" + res[i].stockQuantity + " Left in Stock!)");
             }
         }
-);
+)
 };
 
 //===========================================================================//
