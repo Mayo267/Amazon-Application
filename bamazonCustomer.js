@@ -44,7 +44,7 @@ function showList(){
         function(err, res) {
             // console.log(res);
             for(var i = 0; i < res.length; i++){
-                console.log(res[i].itemID + " | " + res[i].productName + " | " + res[i].deptName + " | " + res[i].price + " | " + res[i].stockQuantity);
+                console.log("\n" + res[i].itemID + " | " + res[i].productName + " -- " + res[i].deptName + " -- " + "$" + res[i].price + " -- (" + res[i].stockQuantity + " Left in Stock!)");
             }
         }
 );
