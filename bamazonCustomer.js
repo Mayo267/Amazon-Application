@@ -70,7 +70,7 @@ function showList(){
                     var availableStock = chosenItem.stockQuantity;
                     var priceOfItem = chosenItem.price;
                     
-                    console.log(orderNum);
+                    // console.log(orderNum);
             //If there is enough, complete order...
             if(chosenQuantity <= availableStock){ //Reverting to insufficient no matter the quantity?? ^^
                 //==Log success.
